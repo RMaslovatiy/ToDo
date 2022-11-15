@@ -1,8 +1,7 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import ItemContainer from "../itemContainer/itemContainer"
 import AddItem from "./addItem";
 import AddItemField from "../itemContainer/addItemField";
-import EditList from "./editList";
 import DeleteList from "./deleteList";
 import { addItemRequest } from "../requests"
 
@@ -14,14 +13,9 @@ function ListElement({ lists, setLists }) {
   const [visible, setVisible] = useState(false)
   const [idAddButton, setIdAddButton] = useState()
 
-  const editList = (list) => {
-    console.log(list)
-
-  }
-
 
   const showItemInput = (id) => {
-    setVisible(visible === true ? false : true)
+    setVisible((visible) => !visible)
     setIdAddButton(id)
   }
 
@@ -56,17 +50,9 @@ function ListElement({ lists, setLists }) {
           onClick={showItemInput}
         />
         <div className="list" >
-          {/* {visible ? 
-          <input
-            className="edit-list"
-            value={list.title}></input> */}
           {list.title}
         </div>
         <div className="change-list-container">
-          <EditList
-            list={list}
-            onClick={editList}
-          />
           <DeleteList
             id={key}
             list={list}
