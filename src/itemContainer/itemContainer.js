@@ -1,43 +1,27 @@
 import ItemElement from "./itemElement";
 import DeleteItemButton from "./deleteItemButton";
-import React, { useState, useCallback } from "react";
-import { deleteItemRequest } from "../requests";
+import React, { useState, useCallback, useEffect } from "react";
 
+const ItemContainer = ({ list, onDelete }) => {
+  const handleDelete = useCallback(
+    (id) => {
+      onDelete(id);
+    },
+    [onDelete]
+  );
 
-const ItemContainer = ({ list }) => {
+  if (list.items && list.items.length > 0) {
+    return (
+      <div className="items-container">
+        {list.items.map((item, key) => (
+          <div key={key} className="item-el">
+            <ItemElement item={item} list={list} />
+            <DeleteItemButton id={item.id} onClick={handleDelete} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+};
 
-    const [items, setItems] = useState(list?.items || []);
-
-    const onDelete = useCallback((id) => {
-        deleteItemRequest(list.id, id)
-            .then(response => {
-                if (response.status === 204) {
-                    setItems(items.filter(item => item.id !== id))
-                }
-            })
-    }, [items, setItems, list]);
-    if (items && items.length > 0) {
-        return (
-            <div className="items-container">
-
-                {items.map((item, key) => (
-                    <div key={key} className="item-el">
-                        <ItemElement item={item} list={list} />
-                        <DeleteItemButton
-                            id={item.id}
-                            onClick={onDelete}
-                        />
-
-                    </div>
-                ))}
-
-
-            </div>
-        )
-    }
-
-
-
-}
-
-export default ItemContainer
+export default ItemContainer;
