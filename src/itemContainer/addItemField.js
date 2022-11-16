@@ -15,7 +15,7 @@ const AddItemField = ({ id, onKeyDown, visibility, idAddButton }) => {
 
                 <TextField
                     fullWidth
-                    color="success"
+                    color="primary"
                     size="small"
                     id="outlined-basic"
                     label="Введіть підзадачу"

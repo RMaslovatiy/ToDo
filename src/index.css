@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+  
   .top  {
   text-align: center;
 }
@@ -10,140 +12,124 @@
     margin-top: 15px;
   background: linear-gradient(
     90deg,
-    rgb(41, 159, 88) 0%,
-    rgb(15, 132, 33) 100%
+    rgb(113, 140, 204) 0%,
+    rgb(58, 145, 221) 100%
   );
   color: #fff;
   border: none;
   border-radius: 5px;
-  
-}
-
-button {
-  display: inline-block;
-  cursor: pointer;
-  padding: 14px 8px 14px 8px;
-  border-radius: 4px 0 0 4px;
-  border: 2px solid #054c19;
-  outline: none;
-  background: transparent;;
-  border-radius: 0 4px 4px 0;
-  border: 2px solid #054c19;
-  outline: none;
-  background: transparent;
+  font-family: 'Comfortaa', cursive;
 }
 
 .list-container {
   display:block;
   padding: 5px 10px 5px 10px;
   border-radius: 4px;
-  border: 2px solid #054c19;
+  border: 2px solid #3c4da0;
   outline: none;
   background: transparent;
   margin-top: 15px;
-  
- 
-}
-
-.list {
-  display:inline-block;
-  margin-left: 10px;
   }
 
-.edit-list{
-  
-}
+  .add-item {
+    display: inline-block;
+    cursor: pointer; 
+    color: #fff;
+    }
 
-input {
-  margin-top: 15px;
-  padding: 14px 74px 14px 20px;
-  border-radius: 4px 0 0 4px;
-  border: 2px solid #054c19;
-   background: none;
-}
- .items-container  {
-  border: 1px solid #054c19;
+    .list {
+      display:inline-block;
+      margin-left: 10px;
+      }
+
+      .change-list-container{
+        display:flex;
+        cursor: pointer;
+         float: right;
+       
+      }      
+
+.items-container  {
+  border: 1px solid #3c4da0;
   border-radius:  4px;
   cursor: pointer;
-  
   text-align: center;
   background: linear-gradient(
-    90deg,
-    rgb(41, 159, 88) 0%,
-    rgb(15, 132, 33) 100%
+   90deg,
+   rgb(113, 140, 204) 0%,
+    rgb(58, 145, 221) 100%
   );
   color: #fff;
   text-transform: capitalize;
-  
-}
-
-.item-el {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2px 0px 2px 2px;
-  
-}
-.item  {
-  display: flex;
-  min-width: 235px;
-  max-width: 235px;
-  justify-content: space-between;
-   padding: 5px;
-  border: 1px solid #054c19;
-  border-radius:  4px;
-  cursor: pointer;
-  
-  background: linear-gradient(
-    90deg,
-    rgb(19, 97, 50) 0%,
-    rgb(15, 132, 33) 100%
-  );
-  color: #fff;
-  text-transform: capitalize;
-  
-}
-
-.itemDone {
-  display: flex;
-  min-width: 235px;
-  max-width: 235px;
-  justify-content: space-between;
-  text-decoration: line-through;
-  padding: 5px;
-  border: 1px solid #054c19;
-  border-radius:  4px;
-  cursor: pointer;
-    text-align: center;
-    background: linear-gradient(
-      90deg,
-      rgb(19, 97, 50) 0%,
-      rgb(15, 132, 33) 100%
-    );
-  color: #fff;
-  text-transform: capitalize;
-}
-
-.change-list-container{
-  display:flex;
-  cursor: pointer;
-   float: right;
- 
-}
-
-.del-button-item {
-  cursor: pointer;
-  display:flex;
-  float: right;
- 
-}
-.add-item {
-  display: inline-block;
-  cursor: pointer; 
-  color: #fff;
   }
 
-  .item-input{
+  .item-el {
     display: flex;
-       padding: 5px 5px 5px 5px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 0px 2px 2px;
+   }
+  .item  {
+    display: flex;
+    min-width: 235px;
+    max-width: 235px;
+    justify-content: space-between;
+     padding: 5px;
+    border: 1px solid #1a309c;
+    border-radius:  4px;
+    cursor: pointer;
+     color: #fff;
+    text-transform: capitalize;
+    }
+  
+  .itemDone {
+    display: flex;
+    min-width: 235px;
+    max-width: 235px;
+    justify-content: space-between;
+    text-decoration: line-through;
+    padding: 5px;
+    border: 1px solid #1a309c;
+    border-radius:  4px;
+    cursor: pointer;
+      text-align: center;
+       color: rgb(34, 110, 198);
+    text-transform: capitalize;
   }
+  
+  .del-button-item {
+    cursor: pointer;
+    display:flex;
+    float: right;
+   }
+  
+    .item-input{
+      display: flex;
+         padding: 5px 5px 5px 5px;
+    }
+
+    input {
+      margin-top: 15px;
+      padding: 14px 74px 14px 20px;
+      border-radius: 4px 0 0 4px;
+      border: 2px solid #3c4da0;
+       background: none;
+       outline:none;
+       
+    }
+    
+    ::placeholder{
+      color: rgb(29, 27, 72);
+    }
+
+button {
+  display: inline-block;
+  cursor: pointer;
+  padding: 14px 8px 14px 8px;
+  outline: none;
+  background: transparent;;
+  border-radius: 0 4px 4px 0;
+  border: 2px solid #3c4da0;
+  outline: none;
+  background: transparent;
+}
