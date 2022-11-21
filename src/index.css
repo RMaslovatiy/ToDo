@@ -7,7 +7,7 @@
 .App  {
   display: inline-block;
   padding: 14px;
-  width: 300px;
+  width: 400px;
   margin: auto;
     margin-top: 15px;
   background: linear-gradient(
@@ -71,8 +71,8 @@
    }
   .item  {
     display: flex;
-    min-width: 235px;
-    max-width: 235px;
+    min-width: 340px;
+    max-width: 340px;
     justify-content: space-between;
      padding: 5px;
     border: 1px solid #1a309c;
@@ -84,8 +84,8 @@
   
   .itemDone {
     display: flex;
-    min-width: 235px;
-    max-width: 235px;
+    min-width: 340px;
+    max-width: 340px;
     justify-content: space-between;
     text-decoration: line-through;
     padding: 5px;
@@ -105,12 +105,13 @@
   
     .item-input{
       display: flex;
-         padding: 5px 5px 5px 5px;
+         padding: 7px 5px 5px 5px;
     }
 
     input {
       margin-top: 15px;
-      padding: 14px 74px 14px 20px;
+      padding: 14px 0 14px 20px;
+      width: 336px;
       border-radius: 4px 0 0 4px;
       border: 2px solid #3c4da0;
        background: none;
