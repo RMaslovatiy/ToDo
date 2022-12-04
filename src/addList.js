@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { postList } from "./redux/reducers/lists/asyncThunks";
 
-import { addListRequest } from "./requests";
-
-const AddList = ({ lists, setLists }) => {
-
+const AddList = () => {
+    const dispatch = useDispatch();
     const [value, setValue] = useState('')
 
-    function addTitle() {
-        const listTitle = { title: value }
-        addListRequest(listTitle)
-            .then(response => setLists([...lists, response]))
-
-        setValue('');
-    }
-
     function handleEnter(event) {
-        if (event.key === 'Enter') addTitle()
+        if (event.key === 'Enter') addTask()
+    };
+    const addTask = () => {
+        dispatch(postList(value));
+        setValue('');
     };
 
     return (
@@ -26,8 +22,7 @@ const AddList = ({ lists, setLists }) => {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}>
             </input>
-
-            <button onClick={addTitle}>OK</button>
+            <button onClick={addTask}>OK</button>
         </div>
     )
 }

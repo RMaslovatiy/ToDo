@@ -15,17 +15,20 @@ export function addListRequest(data) {
   }).then((response) => response.json()); // convert response to json
 }
 
-export function deleteListRequest(list) {
-  return fetch(`${apiRoot}/TodoList/${list.id}`, {
+export function deleteListRequest(id) {
+  return fetch(`${apiRoot}/TodoList/${id}`, {
     method: "DELETE",
   });
 }
 
 export function changeIsDoneRequest(item, list) {
-  item.isDone = item.isDone ? false : true;
+
+  let targetItem = {}
+  targetItem.isDone = item.isDone ? false : true;
+
   return fetch(`${apiRoot}/TodoList/${list.id}/item/${item.id}/status`, {
     method: "PATCH",
-    body: JSON.stringify(item),
+    body: JSON.stringify(targetItem),
     headers: {
       "Content-Type": "application/json",
     },

@@ -1,26 +1,27 @@
-
-
-import { changeIsDoneRequest } from "../requests"
-
+import { toggleIsDone } from "../redux/reducers/lists/listsReducer"
+import { useDispatch } from 'react-redux';
 
 
 const ItemElement = ({ item, list }) => {
+  const dispatch = useDispatch();
+
+  const changeIsDone = () => {
+    const target = {
+      list: list,
+      item: item,
+    }
+    dispatch(toggleIsDone(target))
+  }
   return (
     <div
       className={item.isDone ? 'itemDone' : 'item'}
-      onClick={(el) => changeIsDone(item, list, el)}
+      onClick={() => changeIsDone()}
       key={item.id}
     >
       {item.name}
     </div>
   )
 }
-
-function changeIsDone(item, list, el) {
-  el.target.className = el.target.className === 'item' ? 'itemDone' : 'item'
-  changeIsDoneRequest(item, list);
-}
-
 export default ItemElement
 
 

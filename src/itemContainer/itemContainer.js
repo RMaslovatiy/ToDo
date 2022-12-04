@@ -1,6 +1,6 @@
 import ItemElement from "./itemElement";
 import DeleteItemButton from "./deleteItemButton";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 
 const ItemContainer = ({ list, onDelete }) => {
   const handleDelete = useCallback(
