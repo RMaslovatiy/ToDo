@@ -7,7 +7,6 @@ import { getTodoLists, postItem } from "../redux/reducers/lists/asyncThunks";
 import AddItemField from "../itemContainer/addItemField";
 import DeleteList from "./deleteList";
 
-
 function ListElement() {
   const dispatch = useDispatch();
   const [visibleItemInput, setVisibleItemInput] = useState(false);
@@ -19,14 +18,13 @@ function ListElement() {
     setIdAddButton(id);
   };
 
-
   useEffect(() => {
     dispatch(getTodoLists());
   }, [dispatch]);
 
   const addItem = (id, event, value, resetValue) => {
     if (event.key === "Enter") {
-      let data = {
+      const data = {
         name: { name: value },
         id: id,
       };
@@ -38,16 +36,8 @@ function ListElement() {
   };
 
   return lists.map((list) => (
-
-    <div
-      key={list.id}
-      className="list-container"
-    >
-      <AddItem
-        id={list.id}
-        onClick={showItemInput}
-
-      />
+    <div key={list.id} className="list-container">
+      <AddItem id={list.id} onClick={showItemInput} />
       <div className="list">{list.title}</div>
       <div className="change-list-container">
         <DeleteList id={list.id} />
@@ -57,7 +47,7 @@ function ListElement() {
         onDelete={(id) => {
           const data = {
             list: list,
-            item: id
+            item: id,
           };
           dispatch(delItem(data));
         }}
