@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ItemContainer from "../itemContainer/itemContainer";
 import AddItem from "./addItem";
-import { delItem } from "../redux/reducers/lists/listsReducer";
-import { getTodoLists, postItem } from "../redux/reducers/lists/asyncThunks";
+import { getTodoLists, postItem, delItem } from "../redux/reducers/lists/asyncThunks";
 import AddItemField from "../itemContainer/addItemField";
 import DeleteList from "./deleteList";
 
@@ -26,7 +25,7 @@ function ListElement() {
     if (event.key === "Enter") {
       const data = {
         name: { name: value },
-        id: id,
+        id,
       };
 
       dispatch(postItem(data));
@@ -47,7 +46,7 @@ function ListElement() {
         onDelete={(id) => {
           const data = {
             list: list,
-            item: id,
+            itemId: id,
           };
           dispatch(delItem(data));
         }}

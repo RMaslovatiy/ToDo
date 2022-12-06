@@ -1,5 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getLists, addListRequest, addItemRequest } from "../../../requests";
+import {
+  getLists,
+  addListRequest,
+  addItemRequest,
+  deleteListRequest,
+  changeIsDoneRequest,
+  deleteItemRequest,
+} from "../../../requests";
 
 export const getTodoLists = createAsyncThunk("lists/getLists", async () => {
   const response = await getLists();
@@ -13,10 +20,27 @@ export const postList = createAsyncThunk("lists/addListRequest", async (value) =
   return response;
 });
 
+export const delList = createAsyncThunk("lists/deleteListRequest", async (id) => {
+  await deleteListRequest(id);
+  return id;
+});
+
 export const postItem = createAsyncThunk("lists/addItemRequest", async (data) => {
   const response = await addItemRequest(data.name, data.id);
   return { response, data };
 });
+
+export const toggleIsDone = createAsyncThunk("lists/changeIsDoneRequest", async (data) => {
+  const response = await changeIsDoneRequest(data.item, data.list);;
+  return { response, data };
+});
+
+export const delItem = createAsyncThunk("lists/deleteItemRequest", async (data) => {
+  // await deleteItemRequest(data.list.id, data.item);
+  return data;
+});
+
+
 
 
 

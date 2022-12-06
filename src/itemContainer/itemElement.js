@@ -1,4 +1,4 @@
-import { toggleIsDone } from "../redux/reducers/lists/listsReducer"
+import { toggleIsDone } from '../redux/reducers/lists/asyncThunks';
 import { useDispatch } from 'react-redux';
 
 
@@ -6,11 +6,11 @@ const ItemElement = ({ item, list }) => {
   const dispatch = useDispatch();
 
   const changeIsDone = () => {
-    const target = {
-      list: list,
-      item: item,
+    const data = {
+      list,
+      item
     }
-    dispatch(toggleIsDone(target))
+    dispatch(toggleIsDone(data))
   }
   return (
     <div

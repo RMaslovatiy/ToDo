@@ -1,10 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { getTodoLists, postList, postItem } from "./asyncThunks";
-import {
-  deleteListRequest,
-  changeIsDoneRequest,
-  deleteItemRequest,
-} from "../../../requests";
+import { getTodoLists, postList, delList, postItem, delItem, toggleIsDone } from "./asyncThunks";
+
 
 export const listsSlice = createSlice({
   name: "lists",
@@ -16,55 +12,21 @@ export const listsSlice = createSlice({
       state.data = action.payload;
     },
 
-    delList(state, action) {
-      state.data = state.data.filter((list) => list.id !== action.payload);
-      deleteListRequest(action.payload);
-    },
 
-    delItem(state, action) {
-      state.data = state.data.map((innerList) => {
-        if (action.payload.list.id === innerList.id) {
-          return {
-            ...innerList,
-            items: innerList.items.filter(
-              (item) => item.id !== action.payload.item
-            ),
-          };
-        }
-        return innerList;
-      });
-      deleteItemRequest(action.payload.list.id, action.payload.item);
-    },
-
-    toggleIsDone(state, action) {
-      changeIsDoneRequest(action.payload.item, action.payload.list);
-      return {
-        ...state,
-        data: state.data.map((list) =>
-          list.id === action.payload.list.id
-            ? {
-                ...list,
-                items: list.items.map((item) =>
-                  item.id === action.payload.item.id
-                    ? {
-                        ...item,
-                        isDone: !action.payload.item.isDone,
-                      }
-                    : item
-                ),
-              }
-            : list
-        ),
-      };
-    },
   },
   extraReducers(builder) {
     builder.addCase(getTodoLists.fulfilled, (state, action) => {
       state.data = action.payload;
     });
+
     builder.addCase(postList.fulfilled, (state, action) => {
-      state.data = [...state.data, action.payload];
+      state.data.push(action.payload);
     });
+
+    builder.addCase(delList.fulfilled, (state, action) => {
+      state.data = state.data.filter((list) => list.id !== action.payload);
+    });
+
     builder.addCase(postItem.fulfilled, (state, action) => {
       const list = state.data.find(
         (list) => list.id === action.payload.data.id
@@ -77,8 +39,43 @@ export const listsSlice = createSlice({
         list.items.push(action.payload.response);
       }
     });
+
+    builder.addCase(toggleIsDone.fulfilled, (state, action) => {
+      const list = state.data.find(
+        (list) => list.id === action.payload.data.list.id
+      );
+      list.items.forEach((item) => {
+        if (item.id === action.payload.data.item.id) {
+          item.isDone = !item.isDone;
+        }
+      });
+    });
+
+    builder.addCase(delItem.fulfilled, (state, action) => {
+      console.log(action.payload)
+
+      // const list = state.data.find(
+      //   (list) => list.id === action.payload.list.id
+      // );
+      // list.items.filter((item) => item.id !== action.payload.itemId);
+
+      //=================================
+
+      state.data = state.data.map((innerList) => {
+        if (action.payload.list.id === innerList.id) {
+          return {
+            ...innerList,
+            items: innerList.items.filter(
+              (item) => item.id !== action.payload.itemId
+            ),
+          };
+        }
+        return innerList;
+      });
+
+    });
   },
 });
 
-export const { addList, delList, delItem, toggleIsDone } = listsSlice.actions;
+export const { } = listsSlice.actions;
 export default listsSlice.reducer;

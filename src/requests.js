@@ -32,7 +32,7 @@ export function changeIsDoneRequest(item, list) {
     headers: {
       "Content-Type": "application/json",
     },
-  });
+  }).then((response) => response.json());;
 }
 
 export function deleteItemRequest(listId, itemId) {

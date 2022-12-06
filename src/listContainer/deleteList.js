@@ -1,7 +1,7 @@
 import { DeleteForever } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import { useDispatch } from 'react-redux';
-import { delList } from "../redux/reducers/lists/listsReducer"
+import { delList } from "../redux/reducers/lists/asyncThunks"
 
 const DeleteList = (id) => {
   const dispatch = useDispatch();
