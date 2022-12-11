@@ -5,8 +5,9 @@ import AddItem from "./addItem";
 import { getTodoLists, postItem, delItem } from "../redux/reducers/lists/asyncThunks";
 import AddItemField from "../itemContainer/addItemField";
 import DeleteList from "./deleteList";
+import ListElement from "./listElement/listElement";
 
-function ListElement() {
+function ListContainer() {
   const dispatch = useDispatch();
   const [visibleItemInput, setVisibleItemInput] = useState(false);
   const [idAddButton, setIdAddButton] = useState();
@@ -27,7 +28,6 @@ function ListElement() {
         name: { name: value },
         id,
       };
-
       dispatch(postItem(data));
       resetValue();
       setVisibleItemInput(false);
@@ -35,12 +35,14 @@ function ListElement() {
   };
 
   return lists.map((list) => (
+
     <div key={list.id} className="list-container">
       <AddItem id={list.id} onClick={showItemInput} />
-      <div className="list">{list.title}</div>
-      <div className="change-list-container">
-        <DeleteList id={list.id} />
-      </div>
+
+      <ListElement list={list} />
+
+      <DeleteList id={list.id} />
+
       <ItemContainer
         list={list}
         onDelete={(id) => {
@@ -63,4 +65,4 @@ function ListElement() {
   ));
 }
 
-export default ListElement;
+export default ListContainer;

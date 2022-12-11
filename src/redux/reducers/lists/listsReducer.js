@@ -1,5 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { getTodoLists, postList, delList, postItem, delItem, toggleIsDone } from "./asyncThunks";
+import { getTodoLists, postList, editList, delList, postItem, delItem, toggleIsDone } from "./asyncThunks";
 
 
 export const listsSlice = createSlice({
@@ -21,6 +21,16 @@ export const listsSlice = createSlice({
 
     builder.addCase(postList.fulfilled, (state, action) => {
       state.data.push(action.payload);
+    });
+
+    builder.addCase(editList.fulfilled, (state, action) => {
+
+      state.data = state.data.map((list) => {
+        if (list.id === action.payload.id) {
+          return action.payload
+        }
+        return list;
+      })
     });
 
     builder.addCase(delList.fulfilled, (state, action) => {
@@ -52,11 +62,8 @@ export const listsSlice = createSlice({
     });
 
     builder.addCase(delItem.fulfilled, (state, action) => {
-      console.log(action.payload)
 
-      // const list = state.data.find(
-      //   (list) => list.id === action.payload.list.id
-      // );
+      // const list = state.data.find((list) => list.id === action.payload.list.id);
       // list.items.filter((item) => item.id !== action.payload.itemId);
 
       //=================================

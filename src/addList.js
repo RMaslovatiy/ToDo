@@ -17,6 +17,7 @@ const AddList = () => {
     return (
         <div>
             <input
+                className='list-input'
                 onKeyDown={handleEnter}
                 placeholder="Введіть задачу"
                 value={value}

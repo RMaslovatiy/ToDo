@@ -37,17 +37,34 @@
     color: #fff;
     }
 
-    .list {
+    .list-element {
       display:inline-block;
       margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom:  5px
+      
+      }
+      .input-element{
+        font-family: 'Comfortaa', cursive;
+        font-size:18px;
+        margin-bottom:  -5px;
+        border-radius:  4px;
+        background: none;
+       outline:none;
+        
       }
 
-      .change-list-container{
+      .del-list-container{
         display:flex;
         cursor: pointer;
          float: right;
        
-      }      
+      }  
+      .change-list-container{
+        display:inline-block;
+        cursor: pointer;
+              
+      }          
 
 .items-container  {
   border: 1px solid #3c4da0;
@@ -108,7 +125,7 @@
          padding: 7px 5px 5px 5px;
     }
 
-    input {
+    .list-input {
       margin-top: 15px;
       padding: 14px 0 14px 20px;
       width: 336px;

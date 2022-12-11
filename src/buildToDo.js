@@ -1,5 +1,5 @@
 import AddList from "./addList";
-import ListElement from "./listContainer/listElement";
+import ListContainer from "./listContainer/listContainer";
 import { useSelector } from 'react-redux'
 import "./index.css";
 
@@ -9,7 +9,7 @@ function BuildToDo() {
   return (
     <div className="App">
       <div className="top">У списку задач: {length} шт. </div>
-      <ListElement />
+      <ListContainer />
       <AddList />
     </div>
   );

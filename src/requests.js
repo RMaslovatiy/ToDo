@@ -15,6 +15,16 @@ export function addListRequest(data) {
   }).then((response) => response.json()); // convert response to json
 }
 
+export function editListRequest(id, data) {
+  return fetch(`${apiRoot}/TodoList/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((response) => response.json());
+}
+
 export function deleteListRequest(id) {
   return fetch(`${apiRoot}/TodoList/${id}`, {
     method: "DELETE",

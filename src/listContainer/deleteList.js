@@ -7,7 +7,7 @@ const DeleteList = (id) => {
   const dispatch = useDispatch();
   return (
     <div
-      className="del-button-list"
+      className="del-list-container"
       onClick={() => dispatch(delList(id.id))}
     >
       <Tooltip title="Delete List" placement="right">
