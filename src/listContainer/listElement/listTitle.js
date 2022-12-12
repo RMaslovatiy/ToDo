@@ -2,12 +2,8 @@
 
 function ListTitle({ list }) {
 
-
     return (
-
         <div>{list.title}</div>
-
-
     )
 }
 

@@ -1,34 +1,39 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editList } from "../../redux/reducers/lists/asyncThunks";
+import Confirm from "../../components/confirm";
 
 function ListTitleInput({ list, hideListTitleInput }) {
     const dispatch = useDispatch();
     const [value, setValue] = useState(list.title);
+    const data = {
+        value,
+        list
+    };
 
-    const changeList = (event) => {
+    const handleEnter = (event) => {
         if (event.key === "Enter") {
-            const data = {
-                value,
-                list
-            };
-            dispatch(editList(data));
-            hideListTitleInput();
+            changeList();
         }
     };
 
+    const changeList = () => {
+        dispatch(editList(data));
+        hideListTitleInput();
+    };
+
     return (
-        <div>
+        <div >
             <input
                 className="input-element"
                 label="Введіть новий заголовок"
                 defaultValue={value}
                 onChange={(e) => setValue(e.target.value)}
-                onKeyDown={changeList}
+                onKeyDown={handleEnter}
             />
 
+            <Confirm onClick={changeList} />
         </div>
-
     )
 }
 

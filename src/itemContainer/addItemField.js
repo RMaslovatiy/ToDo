@@ -1,15 +1,25 @@
 import { TextField } from "@mui/material"
 import React, { useState } from "react"
+import Confirm from "../components/confirm";
 
-const AddItemField = ({ id, onKeyDown, visibility, idAddButton }) => {
+const AddItemField = ({ id, onKeyDown, visibility, idAddButton, addItem }) => {
 
     const [value, setValue] = useState('');
+    const data = {
+        name: { name: value },
+        id,
+    };
+
+    const confirmClick = () => {
+        addItem(data)
+        resetValue()
+    };
+
+    function resetValue() {
+        setValue('')
+    }
+
     if (visibility && id === idAddButton) {
-
-        function resetValue() {
-            setValue('')
-        }
-
         return (
             <div className="item-input" >
 
@@ -22,10 +32,10 @@ const AddItemField = ({ id, onKeyDown, visibility, idAddButton }) => {
                     variant="outlined"
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
-                    onKeyDown={(e) => onKeyDown(id, e, value, resetValue)}
+                    onKeyDown={(e) => onKeyDown(e, data, resetValue)}
 
                 />
-
+                <Confirm onClick={confirmClick} />
             </div>
         )
     }

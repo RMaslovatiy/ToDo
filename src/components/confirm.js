@@ -2,18 +2,18 @@ import CheckIcon from '@mui/icons-material/Check';
 import { Tooltip } from "@mui/material";
 
 
-const ConfirmChangeTitle = ({ onClick }) => {
+const Confirm = ({ onClick }) => {
 
 
     return (
         <div
-            className='edit-button-list'
+            className='confirm'
             onClick={onClick}>
-            <Tooltip title="Confirm change" placement="right">
+            <Tooltip title="Confirm" placement="right">
                 <CheckIcon fontSize='small' />
             </Tooltip>
         </div>
     )
 }
 
-export default ConfirmChangeTitle
+export default Confirm

@@ -2,15 +2,14 @@ import { useState, useCallback } from "react";
 import ListTitleInput from "./listTitleInput";
 import ListTitle from "./listTitle";
 import EditListTitle from "./editListTitle";
-import ConfirmChangeTitle from "./confirm";
+
 
 function ListElement({ list }) {
+    const [editList, setEditList] = useState(false);
 
     const hideListTitleInput = () => {
         setEditList(false);
     };
-
-    const [editList, setEditList] = useState(false);
 
     const showEditListInput = () => {
         setEditList((editList) => !editList);
@@ -28,7 +27,7 @@ function ListElement({ list }) {
             <div className="change-list-container">
                 {!editList
                     ? <EditListTitle onClick={showEditListInput} />
-                    : <ConfirmChangeTitle onClick={showEditListInput} />}
+                    : <p />}
             </div>
         </div>
     )

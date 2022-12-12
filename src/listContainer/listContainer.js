@@ -22,16 +22,17 @@ function ListContainer() {
     dispatch(getTodoLists());
   }, [dispatch]);
 
-  const addItem = (id, event, value, resetValue) => {
+
+  const handleEnterForAddItem = (event, data, resetValue) => {
     if (event.key === "Enter") {
-      const data = {
-        name: { name: value },
-        id,
-      };
-      dispatch(postItem(data));
+      addItem(data);
       resetValue();
-      setVisibleItemInput(false);
     }
+  };
+
+  const addItem = (data) => {
+    dispatch(postItem(data));
+    setVisibleItemInput(false);
   };
 
   return lists.map((list) => (
@@ -57,10 +58,12 @@ function ListContainer() {
       <AddItemField
         id={list.id}
         list={list}
-        onKeyDown={addItem}
+        onKeyDown={handleEnterForAddItem}
         visibility={visibleItemInput}
         idAddButton={idAddButton}
+        addItem={addItem}
       />
+
     </div>
   ));
 }

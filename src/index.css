@@ -64,7 +64,11 @@
         display:inline-block;
         cursor: pointer;
               
-      }          
+      }    
+      .confirm{
+        display:inline-block;
+        cursor: pointer;
+      }      
 
 .items-container  {
   border: 1px solid #3c4da0;
