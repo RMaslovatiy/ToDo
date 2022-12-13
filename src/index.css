@@ -2,13 +2,14 @@
   
   .top  {
   text-align: center;
+  height: 20px;
 }
 
 .App  {
   display: inline-block;
   padding: 14px;
   width: 400px;
-  margin: auto;
+    margin: auto;
     margin-top: 15px;
   background: linear-gradient(
     90deg,
@@ -68,6 +69,7 @@
       .confirm{
         display:inline-block;
         cursor: pointer;
+        align-self: center;
       }      
 
 .items-container  {

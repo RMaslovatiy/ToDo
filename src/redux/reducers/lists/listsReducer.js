@@ -6,6 +6,7 @@ export const listsSlice = createSlice({
   name: "lists",
   initialState: {
     data: [],
+    isLoading: false,
   },
   reducers: {
     setLists(state, action) {
@@ -17,6 +18,11 @@ export const listsSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(getTodoLists.fulfilled, (state, action) => {
       state.data = action.payload;
+      state.isLoading = false;
+    });
+
+    builder.addCase(getTodoLists.pending, (state, action) => {
+      state.isLoading = true;
     });
 
     builder.addCase(postList.fulfilled, (state, action) => {

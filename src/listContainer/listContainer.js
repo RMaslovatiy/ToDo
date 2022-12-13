@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ItemContainer from "../itemContainer/itemContainer";
 import AddItem from "./addItem";
-import { getTodoLists, postItem, delItem } from "../redux/reducers/lists/asyncThunks";
+import { postItem, delItem } from "../redux/reducers/lists/asyncThunks";
 import AddItemField from "../itemContainer/addItemField";
 import DeleteList from "./deleteList";
 import ListElement from "./listElement/listElement";
@@ -17,11 +17,6 @@ function ListContainer() {
     setVisibleItemInput((visibleItemInput) => !visibleItemInput);
     setIdAddButton(id);
   };
-
-  useEffect(() => {
-    dispatch(getTodoLists());
-  }, [dispatch]);
-
 
   const handleEnterForAddItem = (event, data, resetValue) => {
     if (event.key === "Enter") {
